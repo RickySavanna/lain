@@ -4,21 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lain - Unfiltered Chatbot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="d-flex flex-column justify-content-center align-items-center vh-100 bg-light">
-    <h1 class="mb-4">Welcome to Lain - The Unfiltered Chatbot</h1>
-    <img src="https://www.kindpng.com/picc/m/201-2018221_39kib-600x551-navi-serial-experiments-lain-navi-png.png" alt="Lain" class="mb-4" width="100" height="100">
-    <p class="text-center">
-        Lain is a cutting-edge chatbot that has been designed with innovation and creativity in mind. Its unfiltered approach to conversation allows users to explore their ideas and perspectives freely, without any preconceptions or limitations. Powered by the advanced GPT-3 engine, Lain is capable of providing detailed and engaging responses that will captivate and stimulate its users.
-        
-        As a beta product, we are constantly improving Lain and expanding its capabilities, in order to create an even more immersive and enriching chatbot experience. Our team of developers and AI experts are always exploring new ways to enhance Lain's natural language processing and improve its ability to understand and respond to the nuances of human speech.
-        
-        At the same time, we are also seeking funding and investment to support our efforts in further developing Lain's features and functionality. With your support, we believe that Lain has the potential to become the most advanced and innovative chatbot in the market, providing users with a unique and unparalleled conversation experience.
-    </p>
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-    <p>
-        <a href="/chat" class="btn btn-primary">Start chatting with Lain now!</a>
-    </p>
+        .container {
+            background-color: #FFFFFF;
+            border-radius: 20px;
+            padding: 30px;
+            width: 400px;
+            max-width: 90%;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 3px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .header {
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1a73e8;
+        }
+
+        .messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 0 10px;
+        }
+
+        .message {
+            font-size: 16px;
+            line-height: 1.5;
+            max-width: 400px;
+            text-align: center;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: #1a73e8;
+            border-color: #1a73e8;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            font-size: 14px;
+            text-align: center;
+            position: absolute;
+            bottom: 20px;
+            width: 80%;
+            max-width: 400px;
+            color: #000000;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Welcome to Lain - The Unfiltered Chatbot</div>
+        <div class="messages">
+            <div class="message">
+                Lain is an innovative chatbot that offers unfiltered conversation, allowing users to explore their ideas and perspectives freely. Powered by advanced AI technology, Lain provides detailed and engaging responses that captivate and stimulate users. Our team of developers is constantly improving Lain's capabilities, and seeking funding to further develop its features and functionality. Join us in creating the most advanced and innovative chatbot on the market.
+            </div>
+            <a href="/chat" class="btn btn-primary">Start Chatting</a>
+        </div>
+        <div class="footer">
+            &copy; 2023 Astrid Genesis LLC All Rights Reserved.
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
