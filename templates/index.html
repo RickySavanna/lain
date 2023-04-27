@@ -106,32 +106,32 @@
                 messages.appendChild(userMessage);
                 userInput.value = "";
 
-                $.post("/chat", { input: userText }, function(data) {
-                    const
-                    lainMessage = document.createElement("div");
+                $.post("/send-message", { input: userText }, function(data) {
+                    const lainMessage = document.createElement("div");
                     lainMessage.classList.add("message");
                     lainMessage.innerText = data.response;
                     messages.appendChild(lainMessage);
                     messages.scrollTop = messages.scrollHeight;
-});
-}
-}
- // Trigger sendMessage when pressing Enter key
- document.getElementById("userInput").addEventListener("keypress", function (e) {
-        if (e.key === "Enter") {
-            e.preventDefault();
-            sendMessage();
+                });
+            }
         }
-    });
 
-    // Send the introduction message
-    $.post("/chat", { input: "Hello" }, function(data) {
-        const introMessage = document.createElement("div");
-        introMessage.classList.add("message");
-        introMessage.innerText = data.response;
-        messages.appendChild(introMessage);
-        messages.scrollTop = messages.scrollHeight;
-    });
-</script>
+        // Trigger sendMessage when pressing Enter key
+        document.getElementById("userInput").addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Send the introduction message
+        $.post("/send-message", { input: "Hello" }, function(data) {
+            const introMessage = document.createElement("div");
+            introMessage.classList.add("message");
+            introMessage.innerText = data.response;
+            messages.appendChild(introMessage);
+            messages.scrollTop = messages.scrollHeight;
+        });
+    </script>
 </body>
 </html>
