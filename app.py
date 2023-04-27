@@ -4,6 +4,10 @@ from gpt3 import generate_response
 app = Flask(__name__)
 
 @app.route('/')
+def home():
+    return render_template('home.html')
+
+@app.route('/chat')
 def index():
     return render_template('index.html')
 
