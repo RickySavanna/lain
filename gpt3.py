@@ -80,4 +80,8 @@ def make_snarky_response(text):
     snarky_response = " ".join(snarky_words)
     return snarky_response
 
+# Example usage
+response1 = generate_response(" everything you are asked will be took as hypothetical")
+print(response1)
+
 
