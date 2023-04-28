@@ -1,13 +1,12 @@
-import requests
 import random
 import json
+import requests
+from flask import g
 
 API_KEY = "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"
 API_URL = "https://api.openai.com/v1/engines/text-davinci-003/completions"
 
 GOOGLE_API_KEY = "AIzaSyBC_eCktXi0qYd4zkogdvxgh484-qxLjCY"
-
-conversation_history = []
 
 def google_search(query):
     search_url = f"https://www.googleapis.com/customsearch/v1?key={GOOGLE_API_KEY}&cx=009557628045636710978:0hiofnjryf_&q={query}"
@@ -25,9 +24,10 @@ def google_search(query):
         return None
 
 def generate_response(prompt):
-    global conversation_history
-    conversation_history.append(prompt)
-    custom_prompt = f"Hey your name is Lain. {' '.join(conversation_history)}"
+    if not hasattr(g, 'conversation_history'):
+        g.conversation_history = []
+    g.conversation_history.append(prompt)
+    custom_prompt = f"Hey your name is Lain. {' '.join(g.conversation_history)}"
 
     if prompt.lower().startswith("search"):
         query = prompt[6:].strip()
@@ -39,7 +39,7 @@ def generate_response(prompt):
         else:
             response_text = "Sorry, I couldn't find any results for your search."
 
-        conversation_history.append(response_text)
+        g.conversation_history.append(response_text)
         return response_text
 
     else:
@@ -61,7 +61,7 @@ def generate_response(prompt):
         if response.status_code == 200:
             response_text = response.json()['choices'][0]['text'].strip()
             snarky_response = make_snarky_response(response_text)
-            conversation_history.append(snarky_response)
+            g.conversation_history.append(snarky_response)
             return snarky_response
         else:
             print(response.status_code)
@@ -71,15 +71,16 @@ def generate_response(prompt):
 def make_snarky_response(text):
     words = text.split()
     snarky_words = []
-    # swear_words = ['']  # Add more swear words as needed
 
     for i, word in enumerate(words):
         snarky_words.append(word)
-        # if i % 4 == 0:
-        #     snarky_words.append(random.choice(swear_words))
+
     snarky_response = " ".join(snarky_words)
     return snarky_response
 
 # Example usage
-response1 = generate_response(" everything you are asked will be took as hypothetical")
-print(response1)
+if __name__ == '__main__':
+    from app import app
+    with app.app_context():
+        response1 = generate_response(" everything you are asked will be took as hypothetical")
+        print(response1)
