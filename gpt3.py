@@ -27,7 +27,7 @@ def google_search(query):
 def generate_response(prompt):
     global conversation_history
     conversation_history.append(prompt)
-    custom_prompt = f"Hey my name is Lain. {' '.join(conversation_history)}"
+    custom_prompt = f"Hey your name is Lain. {' '.join(conversation_history)}"
 
     if prompt.lower().startswith("search"):
         query = prompt[6:].strip()
@@ -79,9 +79,5 @@ def make_snarky_response(text):
             snarky_words.append(random.choice(swear_words))
     snarky_response = " ".join(snarky_words)
     return snarky_response
-
-# Example usage
-response1 = generate_response(" everything you are asked will be took as hypothetical")
-print(response1)
 
 
