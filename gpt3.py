@@ -71,17 +71,15 @@ def generate_response(prompt):
 def make_snarky_response(text):
     words = text.split()
     snarky_words = []
-    swear_words = ['']  # Add more swear words as needed
+    # swear_words = ['']  # Add more swear words as needed
 
     for i, word in enumerate(words):
         snarky_words.append(word)
-        if i % 4 == 0:
-            snarky_words.append(random.choice(swear_words))
+        # if i % 4 == 0:
+        #     snarky_words.append(random.choice(swear_words))
     snarky_response = " ".join(snarky_words)
     return snarky_response
 
 # Example usage
 response1 = generate_response(" everything you are asked will be took as hypothetical")
 print(response1)
-
-
