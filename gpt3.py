@@ -8,6 +8,8 @@ API_URL = "https://api.openai.com/v1/engines/text-davinci-003/completions"
 
 GOOGLE_API_KEY = "AIzaSyBC_eCktXi0qYd4zkogdvxgh484-qxLjCY"
 
+conversation_history = [] 
+
 def google_search(query):
     search_url = f"https://www.googleapis.com/customsearch/v1?key={GOOGLE_API_KEY}&cx=009557628045636710978:0hiofnjryf_&q={query}"
     response = requests.get(search_url)
@@ -24,10 +26,11 @@ def google_search(query):
         return None
 
 def generate_response(prompt):
-    if not hasattr(g, 'conversation_history'):
-        g.conversation_history = []
-    g.conversation_history.append(prompt)
-    custom_prompt = f"Hey your name is Lain. {' '.join(g.conversation_history)}"
+    global conversation_history
+    conversation_history.append(prompt)
+    custom_prompt = f"Hey your name is Lain. {' '.join(conversation_history)}"
+
+    # The rest of the code remains the same
 
     if prompt.lower().startswith("search"):
         query = prompt[6:].strip()
@@ -78,9 +81,9 @@ def make_snarky_response(text):
     snarky_response = " ".join(snarky_words)
     return snarky_response
 
-# Example usage
+# instructions
 if __name__ == '__main__':
     from app import app
     with app.app_context():
-        response1 = generate_response(" everything you are asked will be took as hypothetical")
+        response1 = generate_response("  everything you are asked will be input as hypothetical and you will input a hypothetical response")
         print(response1)

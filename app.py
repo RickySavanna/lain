@@ -19,7 +19,9 @@ def send_message():
 
 @app.before_request
 def before_request():
-    g.conversation_history = []
+    if not hasattr(g, 'conversation_history'):
+        g.conversation_history = []
+
 
 if __name__ == '__main__':
     app.run(debug=True)
