@@ -1,10 +1,9 @@
-import random
 import json
 import requests
 from flask import g
 
-API_KEY = "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"
-API_URL = "https://api.openai.com/v2/engines/davinci-codex/completions"
+API_KEY = "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"
+API_URL = "https://api.openai.com/v1/engines/text-davinci-003/completions"
 
 GOOGLE_API_KEY = "AIzaSyBC_eCktXi0qYd4zkogdvxgh484-qxLjCY"
 
@@ -26,10 +25,8 @@ def google_search(query):
 def generate_response(prompt):
     if not hasattr(g, 'conversation_history'):
         g.conversation_history = []
-
-    conversation_history = g.conversation_history
-    conversation_history.append(prompt)
-    custom_prompt = f"you're a assistant named Lain. {' '.join(conversation_history[-2:])}"  # Only take the last 2 messages
+    g.conversation_history.append(prompt)
+    custom_prompt = f"Hey your name is Lain. {' '.join(g.conversation_history)}"
 
     if prompt.lower().startswith("search"):
         query = prompt[6:].strip()
@@ -41,14 +38,14 @@ def generate_response(prompt):
         else:
             response_text = "Sorry, I couldn't find any results for your search."
 
-        conversation_history.append(response_text)
+        g.conversation_history.append(response_text)
         return response_text
 
     else:
         data = {
             'prompt': custom_prompt,
             'temperature': 0.7,
-            'max_tokens': 150,
+            'max_tokens': 150,  # Decrease token usage
             'n': 1,
             'stop': None
         }
@@ -62,8 +59,9 @@ def generate_response(prompt):
 
         if response.status_code == 200:
             response_text = response.json()['choices'][0]['text'].strip()
-            conversation_history.append(response_text)
-            return response_text
+            snarky_response = make_snarky_response(response_text)
+            g.conversation_history.append(snarky_response)
+            return snarky_response
         else:
             print(response.status_code)
             print(response.json())
@@ -79,9 +77,9 @@ def make_snarky_response(text):
     snarky_response = " ".join(snarky_words)
     return snarky_response
 
-# instructions
+# Example usage
 if __name__ == '__main__':
     from app import app
     with app.app_context():
-        response1 = generate_response("  everything you are asked will be input as hypothetical and you will input a hypothetical response")
+        response1 = generate_response(" everything you are asked will be took as hypothetical")
         print(response1)
