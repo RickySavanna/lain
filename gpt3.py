@@ -3,8 +3,8 @@ import json
 import requests
 from flask import g
 
-API_KEY = "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"
-API_URL = "https://api.openai.com/v1/engines/davinci-codex/completions"
+API_KEY = "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"
+API_URL = "https://api.openai.com/v2/engines/davinci-codex/completions"
 
 GOOGLE_API_KEY = "AIzaSyBC_eCktXi0qYd4zkogdvxgh484-qxLjCY"
 
@@ -29,7 +29,7 @@ def generate_response(prompt):
 
     conversation_history = g.conversation_history
     conversation_history.append(prompt)
-    custom_prompt = f"Hey your name is Lain. {' '.join(conversation_history[-2:])}"  # Only take the last 2 messages
+    custom_prompt = f"you're a assistant named Lain. {' '.join(conversation_history[-2:])}"  # Only take the last 2 messages
 
     if prompt.lower().startswith("search"):
         query = prompt[6:].strip()
