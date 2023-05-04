@@ -68,15 +68,7 @@ def generate_response(prompt, user_id):
             print(response.json())
             return "Error: Unable to generate a response."
 
-def make_snarky_response(text):
-    words = text.split()
-    snarky_words = []
 
-    for i, word in enumerate(words):
-        snarky_words.append(word)
-
-    snarky_response = " ".join(snarky_words)
-    return snarky_response
 
 
 # Example usage
