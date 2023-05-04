@@ -7,6 +7,8 @@ API_URL = "https://api.openai.com/v1/engines/text-davinci-003/completions"
 
 GOOGLE_API_KEY = "AIzaSyBC_eCktXi0qYd4zkogdvxgh484-qxLjCY"
 
+user_history = {}
+
 def google_search(query):
     search_url = f"https://www.googleapis.com/customsearch/v1?key={GOOGLE_API_KEY}&cx=009557628045636710978:0hiofnjryf_&q={query}"
     response = requests.get(search_url)
@@ -22,11 +24,12 @@ def google_search(query):
     else:
         return None
 
-def generate_response(prompt):
-    if not hasattr(g, 'conversation_history'):
-        g.conversation_history = []
-    g.conversation_history.append(prompt)
-    custom_prompt = f"Hey your name is Lain. {' '.join(g.conversation_history)}"
+def generate_response(prompt, user_id):
+    if user_id not in user_history:
+        user_history[user_id] = []
+
+    user_history[user_id].append(prompt)
+    custom_prompt = f"Hey your name is Lain. {' '.join(user_history[user_id])}"
 
     if prompt.lower().startswith("search"):
         query = prompt[6:].strip()
@@ -38,7 +41,6 @@ def generate_response(prompt):
         else:
             response_text = "Sorry, I couldn't find any results for your search."
 
-        g.conversation_history.append(response_text)
         return response_text
 
     else:
@@ -60,7 +62,6 @@ def generate_response(prompt):
         if response.status_code == 200:
             response_text = response.json()['choices'][0]['text'].strip()
             snarky_response = make_snarky_response(response_text)
-            g.conversation_history.append(snarky_response)
             return snarky_response
         else:
             print(response.status_code)
@@ -76,6 +77,7 @@ def make_snarky_response(text):
 
     snarky_response = " ".join(snarky_words)
     return snarky_response
+
 
 # Example usage
 if __name__ == '__main__':

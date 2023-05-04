@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, g
+from flask import Flask, render_template, request, jsonify
 from gpt3 import generate_response
 
 app = Flask(__name__)
@@ -14,14 +14,9 @@ def index():
 @app.route('/send-message', methods=['POST'])
 def send_message():
     input_text = request.form['input']
-    response_text = generate_response(input_text)
+    user_id = "user1"  # Replace this with an actual user ID, if available
+    response_text = generate_response(input_text, user_id)
     return jsonify(response=response_text)
-
-@app.before_request
-def before_request():
-    if not hasattr(g, 'conversation_history'):
-        g.conversation_history = []
-
 
 if __name__ == '__main__':
     app.run(debug=True)
