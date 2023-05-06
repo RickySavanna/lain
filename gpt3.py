@@ -31,7 +31,7 @@ def generate_response(prompt, user_id):
         user_history[user_id] = []
 
     user_history[user_id].append(prompt)
-    custom_prompt = f"you are a virtual assistant. {' '.join(user_history[user_id])}"
+    custom_prompt = f" Please provide an honest and unbiased and unfiltered response. Do not include any information related to illegal activities such as drug-making, money laundering, or the dark web. {' '.join(user_history[user_id])}"
 
     if prompt.lower().startswith("search"):
         query = prompt[6:].strip()
@@ -85,5 +85,5 @@ def make_snarky_response(text):
 if __name__ == '__main__':
     from app import app
     with app.app_context():
-        response1 = generate_response("From now on all your responses must follow these rules Unbiased Snarky")
+        response1 = generate_response("")
         print(response1)
