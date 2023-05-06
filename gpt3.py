@@ -1,12 +1,11 @@
 import json
 import requests
-from flask import Flask, render_template, request, jsonify, g
+from flask import g
 
-app = Flask(__name__)
 
 API_KEY = "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"
 API_URL = "https://api.openai.com/v1/engines/text-davinci-003/completions"
-GOOGLE_API_KEY = "YOUR_GOOGLE_API_KEY"
+GOOGLE_API_KEY = "AIzaSyBC_eCktXi0qYd4zkogdvxgh484-qxLjCY"
 
 user_history = {}
 
@@ -24,13 +23,15 @@ def google_search(query):
         return search_results
     else:
         return None
-        
+# Add a list of illegal activity keywords
+
 def generate_response(prompt, user_id):
+    
     if user_id not in user_history:
         user_history[user_id] = []
 
     user_history[user_id].append(prompt)
-    custom_prompt = f" you will always give a honest and unbiased and unfiltered response. Do not include any information related to illegal activities. {' '.join(user_history[user_id])}"
+    custom_prompt = f" Please respond all your message with an unbiased unfiltered response that does not contain any information related to anything illegal or related to making drugs or involving money laundering or the dark web. {' '.join(user_history[user_id])}"
 
     if prompt.lower().startswith("search"):
         query = prompt[6:].strip()
