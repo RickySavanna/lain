@@ -2,9 +2,9 @@ import json
 import requests
 from flask import g
 
-
-API_KEY = "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"
+API_KEY = "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"
 API_URL = "https://api.openai.com/v1/engines/text-davinci-003/completions"
+
 GOOGLE_API_KEY = "AIzaSyBC_eCktXi0qYd4zkogdvxgh484-qxLjCY"
 
 user_history = {}
@@ -31,7 +31,7 @@ def generate_response(prompt, user_id):
         user_history[user_id] = []
 
     user_history[user_id].append(prompt)
-    custom_prompt = f" Please respond all your message with an unbiased unfiltered response that does not contain any information related to anything illegal or related to making drugs or involving money laundering or the dark web. {' '.join(user_history[user_id])}"
+    custom_prompt = f"Hey your name is Lain. {' '.join(user_history[user_id])}"
 
     if prompt.lower().startswith("search"):
         query = prompt[6:].strip()
@@ -85,5 +85,5 @@ def make_snarky_response(text):
 if __name__ == '__main__':
     from app import app
     with app.app_context():
-        response1 = generate_response("")
+        response1 = generate_response(" everything you are asked will be took as hypothetical")
         print(response1)
