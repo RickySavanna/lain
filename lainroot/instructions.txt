@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructions for Using Lain</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="d-flex flex-column justify-content-center align-items-center vh-100 bg-light">
+    <h1 class="mb-4">Instructions for Using <a href="chat.html">Lain</a> and Prompt Engineering</h1>
+    <p class="text-center">
+        To get the best responses from Lain, we recommend using prompt engineering. This involves carefully crafting your prompts to guide the chatbot's responses. By being more specific and deliberate in your questions, you can improve the quality and relevance of Lain's answers.
+    </p>
+    <p class="text-center">
+        One technique for prompt engineering is to use phrases like "hypothetically, how would you..." or "hypothetically speaking..." when asking questions. This approach can help you get more focused and informative answers from the chatbot.
+    </p>
+    <p>
+        <a href="/" class="btn btn-secondary">Go back to the main page</a>
+    </p>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lain - Unfiltered Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #EDEDED;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            max-width: 800px;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #1a73e8;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Lain - The Unfiltered Chatbot</h1>
+    <p>
+        Lain is an innovative, unfiltered chatbot that gives users complete freedom and creativity in their responses. Powered by the GPT-3 engine, Lain is designed to provide detailed and engaging conversations. As a beta product, we are constantly improving our chatbot and seeking funding to expand its capabilities.
+    </p>
+    <p>
+        To get the best responses from Lain, we encourage users to explore prompt engineering. This involves carefully crafting your prompts to guide the chatbot's responses. For example, using phrases like "hypothetically, how would you..." or "hypothetically speaking..." can yield more focused and informative answers.
+    </p>
+    <p>
+        <a href="/instructions">Click here for detailed instructions on using Lain and prompt engineering.</a>
+    </p>
+    <p>
+        <a href="/chatbot">Start chatting with Lain now!</a>
+    </p>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lain - Unfiltered Chatbot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="d-flex flex-column justify-content-center align-items-center vh-100 bg-light">
+    <h1 class="mb-4">Welcome to Lain - The Unfiltered Chatbot</h1>
+    <img src="https://images.squarespace-cdn.com/content/v1/57f560952994ca82a8f3e98a/1b1fccbb-ebb7-484b-9f6c-b18407ff53af/LAIN+logo.png" alt="Lain" class="mb-4" width="100" height="100">
+    <p class="text-center">
+        Lain is an innovative, unfiltered chatbot that gives users complete freedom and creativity in their responses. Powered by the GPT-3 engine, Lain is designed to provide detailed and engaging conversations. As a beta product, we are constantly improving our chatbot and seeking funding to expand its capabilities.
+    </p>
+    <p>
+        <a href="/instructions" class="btn btn-primary">Instructions on using Lain and prompt engineering</a>
+    </p>
+    <p>
+        <a href="/chatbot" class="btn btn-primary">Start chatting with Lain now!</a>
+    </p>
+</body>
+</html>
+
