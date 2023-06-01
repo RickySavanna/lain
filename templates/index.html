@@ -4,51 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lain</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         body {
-            font-family: 'Courier New', monospace;
-            background-color: #000000;
-            color: #33ff33;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 2rem;
-            box-sizing: border-box;
+            font-family: 'Avenir', sans-serif;
+            background-color: #F8F8F8;
         }
-
         .container {
-            width: 100%;
-            height: 100%;
-            max-width: 800px;
-            max-height: 600px;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            max-width: 600px;
+            padding: 20px;
+            background-color: white;
             overflow: auto;
-            border: 1px solid #33ff33;
-            padding: 1rem;
+            height: calc(100vh - 120px);
         }
-
         .input-container {
-            display: flex;
-            margin-top: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 -1px 3px rgba(0,0,0,0.12), 0 -1px 2px rgba(0,0,0,0.24);
         }
-
         .input-container input {
-            flex-grow: 1;
-            background-color: #000000;
-            border: 1px solid #33ff33;
-            color: #33ff33;
-            padding: 0.5rem;
-            outline: none;
+            width: 85%;
+            border: none;
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         }
-
         .input-container button {
-            background-color: #000000;
-            border: 1px solid #33ff33;
-            color: #33ff33;
-            margin-left: 1rem;
-            padding: 0.5rem;
-            cursor: pointer;
+            width: 10%;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 20px;
+            padding: 10px;
+            margin-left: 5%;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+        p {
+            margin: 10px 0;
+        }
+        .userMessage {
+            text-align: right;
+            color: #007BFF;
+        }
+        .lainMessage {
+            color: #333;
         }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -73,8 +81,8 @@
                 userInput.value = "";
 
                 $.post("/send-message", { input: userText }, function(data) {
-                    const lainMessage = document.createElement("p");
-                    lainMessage.style.color = "#33ff33";
+                    const lainMessage = document.createElement("pre");
+                    lainMessage.className = "output";
                     lainMessage.textContent = "Lain: " + data.response;
                     messages.appendChild(lainMessage);
                     messages.scrollTop = messages.scrollHeight;
@@ -99,5 +107,4 @@
             messages.scrollTop = messages.scrollHeight;
         });
     </script>
-</body>
-</html>
+</body

@@ -4,61 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lain - Unfiltered Chatbot</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
     <style>
         body {
-            font-family: 'Courier New', monospace;
-            background-color: #000000;
-            color: #33ff33;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 2rem;
-            box-sizing: border-box;
+            font-family: 'Avenir', sans-serif;
+            background-color: #F8F8F8;
+            color: #333;
         }
-
         .container {
-            width: 100%;
-            height: 100%;
-            max-width: 800px;
-            max-height: 600px;
-            overflow: auto;
-            border: 1px solid #33ff33;
-            padding: 1rem;
+            margin: 30px auto;
+            padding: 20px;
+            max-width: 600px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         }
-
-        h1, p {
-            text-align: center;
-            color: #33ff33;
+        h1 {
+            color: #007BFF;
         }
-
-        a {
-            color: #ff3333;
-            text-decoration: none;
-            border-bottom: 1px solid #ff3333;
+        p {
+            margin: 20px 0;
         }
-
-        a:hover {
-            color: #ff3333;
-            border-bottom: 2px solid #ff3333;
-        }
-
         .btn {
-            display: inline-block;
-            background-color: #000000;
-            border: 1px solid #33ff33;
-            color: #33ff33;
-            padding: 0.5rem 1rem;
-            text-align: center;
+            color: white;
+            background-color: #007BFF;
+            padding: 10px 20px;
+            border-radius: 20px;
             text-decoration: none;
-            margin: 1rem auto;
-            transition: all 0.3s ease-in-out;
+            transition: background-color 0.2s ease;
         }
-
         .btn:hover {
-            background-color: #33ff33;
-            color: #000000;
+            background-color: #0056b3;
+        }
+        .terms {
+            color: #007BFF;
         }
     </style>
 </head>
@@ -67,11 +47,12 @@
         <h1>Lain - Unfiltered Chatbot</h1>
         <p>Lain is an innovative chatbot that offers unfiltered conversation, allowing users to explore their ideas and perspectives freely. Powered by advanced AI technology, Lain provides detailed and engaging responses that captivate and stimulate users. Our team of developers is constantly improving Lain's capabilities, and seeking funding to further develop its features and functionality. Join us in creating the most advanced and innovative chatbot on the market.</p>
         <div style="text-align:center;">
-            <a href="/chat" class="btn">Start Chatting</a>
+            <a href="/chat" class="btn">Login</a>
         </div>
         <p style="text-align:center;">
-            <a href="/terms">Terms and Service</a>
+            <a href="/terms" class="terms">Terms and Service</a>
         </p>
     </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>

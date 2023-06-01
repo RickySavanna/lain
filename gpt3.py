@@ -49,7 +49,7 @@ def generate_response(prompt, user_id):
         data = {
             'prompt': custom_prompt,
             'temperature': 0.7,
-            'max_tokens': 165,  # Decrease token usage
+            'max_tokens': 150,  # Decrease token usage
             'n': 1,
             'stop': None
         }

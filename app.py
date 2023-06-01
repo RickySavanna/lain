@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from gpt3 import generate_response
+from gpt import generate_response
 
 app = Flask(__name__)
 
